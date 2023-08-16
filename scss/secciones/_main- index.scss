@@ -1,0 +1,17 @@
+.main {
+    h1 {
+        font-weight: bold;
+    }
+
+    .primera {
+        .letter {
+            font-weight: bold;
+        }
+
+        .min-letter {
+            font-family: cursive;
+            font-size: 15px;
+        }
+    }
+
+}

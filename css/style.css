@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap");
+.gradiente-musica {
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); }
+
+.main h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold; }
+
+.main .primera .letter {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold; }
+
+.main .primera .min-letter {
+  font-family: 'Roboto', sans-serif;
+  font-family: cursive;
+  font-size: 15px; }
+
+.main .segunda .letter {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold; }
+
+.main .segunda .min-letter {
+  font-family: 'Roboto', sans-serif;
+  font-family: cursive;
+  font-size: 15px; }
+
+.main .tercera .letter {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold; }
+
+.main .tercera .min-letter {
+  font-family: 'Roboto', sans-serif;
+  font-family: cursive;
+  font-size: 15px; }
+
+.main-tienda .h-250 {
+  height: 250px; }
+
+.main-tienda .p-primera {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold; }
+
+.main-tienda .p-segunda {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold; }
+
+.main-tienda .p-tercera {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold; }
+
+.main-sobre-mi .w-250 {
+  width: 250px; }
+
+.main-sobre-mi .max-letter {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  font-size: 33px; }
+
+.main-bailarines .max-letter {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  font-size: 33px; }
+
+.footer {
+  background-color: #f1f1f1; }
+  .footer .copy {
+    background-color: rgba(0, 0, 0, 0.2); }
