@@ -69,25 +69,19 @@ function botonesCantidad() {
       cantidadInput.value = parseInt(cantidadInput.value) + 1;
     });
     const cantidadInputs = document.querySelectorAll(".cantidad-input");
-
     cantidadInputs.forEach((input) => {
-      input.addEventListener("keydown", (e) => {
-        // Obtenemos el valor actual del input
+      input.addEventListener("input", (e) => {
+        // Obtener el valor actual del input
         const inputValue = e.target.value;
 
-        // Obtenemos el código de la tecla presionada
-        const keyCode = e.keyCode || e.which;
+        // Reemplazar cualquier caracter que no sea número con una cadena vacía
+        const sanitizedValue = inputValue.replace(/\D/g, "");
 
-        // Permitimos las teclas de números (del 0 al 9), retroceso (backspace) y suprimir (delete)
-        if (
-          (keyCode >= 48 && keyCode <= 57) || // Números en el teclado principal
-          (keyCode >= 96 && keyCode <= 105) || // Números en el teclado numérico
-          keyCode === 8 || // Retroceso (backspace)
-          keyCode === 46 // Suprimir (delete)
-        ) {
-          // El valor ingresado solo contiene números, se permite
+        // Asegurarse de que el valor no esté vacío y establecer el valor mínimo
+        if (sanitizedValue === "" || sanitizedValue < 1) {
+          e.target.value = ""; // Establecer el valor mínimo si no es válido
         } else {
-          e.preventDefault(); // Prevenir que otros caracteres sean ingresados
+          e.target.value = sanitizedValue;
         }
       });
     });
