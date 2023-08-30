@@ -71,11 +71,23 @@ function botonesCantidad() {
     const cantidadInputs = document.querySelectorAll(".cantidad-input");
 
     cantidadInputs.forEach((input) => {
-      input.addEventListener("input", (e) => {
-        const inputValue = parseInt(e.target.value);
+      input.addEventListener("keydown", (e) => {
+        // Obtenemos el valor actual del input
+        const inputValue = e.target.value;
 
-        if (isNaN(inputValue) || inputValue < 1) {
-          e.target.value = ""; // Establecer el valor mínimo si no es válido
+        // Obtenemos el código de la tecla presionada
+        const keyCode = e.keyCode || e.which;
+
+        // Permitimos las teclas de números (del 0 al 9), retroceso (backspace) y suprimir (delete)
+        if (
+          (keyCode >= 48 && keyCode <= 57) || // Números en el teclado principal
+          (keyCode >= 96 && keyCode <= 105) || // Números en el teclado numérico
+          keyCode === 8 || // Retroceso (backspace)
+          keyCode === 46 // Suprimir (delete)
+        ) {
+          // El valor ingresado solo contiene números, se permite
+        } else {
+          e.preventDefault(); // Prevenir que otros caracteres sean ingresados
         }
       });
     });
@@ -95,12 +107,13 @@ function botonesCantidad() {
 
 function createCantidadContainer() {
   let cantidadInput =
-    '<input type="tel" class="cantidad-input" value="1" min="1">';
-  let botonMas = '<button class="btn-mas btn btn-dark color-light">+</button>';
+    '<input type="tel" class="cantidad-input form-control form-control-sm mx-2" value="1" min="1">';
+  let botonMas =
+    '<button class="btn-mas btn btn-sm btn-dark color-light"><i class="fas fa-plus"></i></button>';
   let botonMenos =
-    '<button class="btn-menos btn btn-dark color-light">-</button>';
+    '<button class="btn-menos btn btn-sm btn-dark color-light"><i class="fas fa-minus"></i></button>';
   return (
-    '<div class="cantidad-container">' +
+    '<div class="cantidad-container d-flex">' +
     botonMenos +
     cantidadInput +
     botonMas +
@@ -112,13 +125,13 @@ function createCantidadContainer() {
 //y se agrega al contenedor "container"
 function renderProductos(productos) {
   //esto es para que se pongan todos los prodcutos de nuevo con sus propiedades
-  let row = '<div class="row">';
+  let row = '<div class="row mb-3">';
   productos.forEach((producto) => {
     let tempMoneda = monedas.filter((m) => m.id === producto.idMoneda)[0];
     // console.log(tempMoneda);
     let cantidadContainer = createCantidadContainer();
     let item =
-      '<div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center flex-column align-items-center"><div class="bg-image hover-zoom"><img class="h-250" src="' +
+      '<div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center flex-column align-items-center mb-5"><div class="bg-image hover-zoom"><img class="h-250" src="' +
       producto.imagen +
       '" alt="' +
       producto.nombre +
