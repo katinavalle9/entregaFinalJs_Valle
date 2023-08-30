@@ -69,19 +69,27 @@ function botonesCantidad() {
       cantidadInput.value = parseInt(cantidadInput.value) + 1;
     });
     const cantidadInputs = document.querySelectorAll(".cantidad-input");
+
     cantidadInputs.forEach((input) => {
       input.addEventListener("input", (e) => {
         // Obtener el valor actual del input
         const inputValue = e.target.value;
 
-        // Reemplazar cualquier caracter que no sea número con una cadena vacía
-        const sanitizedValue = inputValue.replace(/\D/g, "");
+        // Usar regex para permitir solo números enteros
+        const sanitizedValue = inputValue.replace(/[^0-9]/g, "");
 
-        // Asegurarse de que el valor no esté vacío y establecer el valor mínimo
-        if (sanitizedValue === "" || sanitizedValue < 1) {
-          e.target.value = ""; // Establecer el valor mínimo si no es válido
+        // Asegurarse de que el valor no esté vacío
+        if (sanitizedValue === "") {
+          e.target.value = "1"; // Establecer el valor mínimo si está vacío
         } else {
           e.target.value = sanitizedValue;
+        }
+      });
+
+      // Validar la entrada cuando el input pierde el foco
+      input.addEventListener("blur", (e) => {
+        if (e.target.value < 1) {
+          e.target.value = "1"; // Establecer el valor mínimo si es menor a 1
         }
       });
     });
