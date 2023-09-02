@@ -65,8 +65,24 @@ function carrito() {
     cuerpo.innerHTML = cuerpoModal;
     eliminar();
   } else {
+    let index = window.location.href.includes("index.html");
+    let tienda = window.location.href.includes("tienda.html");
+    let href = "";
+    if (index) {
+      href = "pages/tienda.html";
+    } else if(!tienda) {
+      href = "tienda.html";
+    }
+    let enlace = "";
+    if (!tienda) {
+      enlace =
+        '<br><div class="text-center"> <a href="' +
+        href +
+        '" class="link">Ir a la tienda <i class="fa-solid fa-cart-shopping text-dark"></i></a></div>';
+    }
     cuerpo.innerHTML =
-      '<p class="text-center">Todavía no tienes productos en tu carrito <i class="fa-regular fa-face-frown-open text-warning"></i></p>';
+      '<p class="text-center">Todavía no tienes productos en tu carrito <i class="fa-regular fa-face-frown-open text-warning"></i></p>' +
+      enlace;
   }
 }
 
@@ -77,14 +93,19 @@ function eliminar() {
     botonEliminar.addEventListener("click", () => {
       const id = botonEliminar.dataset.idproducto;
       console.log(id);
-      let productosString= localStorage.getItem("productosBallet");
+      let productosString = localStorage.getItem("productosBallet");
       let productosElegidos = JSON.parse(productosString);
-        if(productosElegidos.length ==1){
-            localStorage.clear();
-        }else{
-            productosElegidos = productosElegidos.filter((x)=>x.id !==parseInt(id))
-            localStorage.setItem("productosBallet", JSON.stringify(productosElegidos));
-        }
+      if (productosElegidos.length == 1) {
+        localStorage.clear();
+      } else {
+        productosElegidos = productosElegidos.filter(
+          (x) => x.id !== parseInt(id)
+        );
+        localStorage.setItem(
+          "productosBallet",
+          JSON.stringify(productosElegidos)
+        );
+      }
       console.log(productosElegidos);
       carrito();
     });
