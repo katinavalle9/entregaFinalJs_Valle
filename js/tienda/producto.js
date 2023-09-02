@@ -35,7 +35,7 @@ let productos = [
     (idCategoria = 1)
   ),
   new Producto(
-    (id = 1),
+    (id = 2),
     (nombre = "Puntas Bloch Europea "),
     (imagen = "../images/bloch-europea.webp"),
     (precio = 2150.0),
@@ -46,7 +46,7 @@ let productos = [
     (idCategoria = 1)
   ),
   new Producto(
-    (id = 1),
+    (id = 3),
     (nombre = "Medias Puntas Cameo"),
     (imagen = "../images/cameo-media.webp"),
     (precio = 589.5),
@@ -57,7 +57,7 @@ let productos = [
     (idCategoria = 1)
   ),
   new Producto(
-    (id = 1),
+    (id = 4),
     (nombre = "Medias Puntas Capezio "),
     (imagen = "../images/capezio-media.webp"),
     (precio = 961.0),
@@ -65,7 +65,7 @@ let productos = [
     (idCategoria = 1)
   ),
   new Producto(
-    (id = 1),
+    (id = 5),
     (nombre = "Puntas Capulet"),
     (imagen = "../images/capulet-punta.webp"),
     (precio = 892.9),
@@ -76,7 +76,7 @@ let productos = [
     (idCategoria = 1)
   ),
   new Producto(
-    (id = 1),
+    (id = 6),
     (nombre = "Puntas Chacott"),
     (imagen = "../images/chacott-media.webp"),
     (precio = 826.9),
@@ -87,7 +87,7 @@ let productos = [
     (idCategoria = 1)
   ),
   new Producto(
-    (id = 1),
+    (id = 7),
     (nombre = "Falda Cruzada Negro"),
     (imagen = "../images/falda-basica.webp"),
     (precio = 399.0),
@@ -98,7 +98,7 @@ let productos = [
     (idCategoria = 2)
   ),
   new Producto(
-    (id = 1),
+    (id = 8),
     (nombre = "Falda Negra Gasa"),
     (imagen = "../images/falda-cruzada.webp"),
     (precio = 559.0),
@@ -109,7 +109,7 @@ let productos = [
     (idCategoria = 2)
   ),
   new Producto(
-    (id = 1),
+    (id = 9),
     (nombre = "Falda Gasa Morada"),
     (imagen = "../images/falda-gasa-morada.webp"),
     (precio = 193.0),
@@ -120,7 +120,7 @@ let productos = [
     (idCategoria = 2)
   ),
   new Producto(
-    (id = 1),
+    (id = 10),
     (nombre = "Falda Gasa Rosada"),
     (imagen = "../images/falda-gasa.webp"),
     (precio = 135.5),
@@ -131,7 +131,7 @@ let productos = [
     (idCategoria = 2)
   ),
   new Producto(
-    (id = 1),
+    (id = 11),
     (nombre = "Falda Larga Gasa Floreada"),
     (imagen = "../images/falda-larga.webp"),
     (precio = 376.0),
@@ -142,7 +142,7 @@ let productos = [
     (idCategoria = 2)
   ),
   new Producto(
-    (id = 1),
+    (id = 12),
     (nombre = "Leotardo Negro"),
     (imagen = "../images/leotardo-cuello.webp"),
     (precio = 471.9),
@@ -153,7 +153,7 @@ let productos = [
     (idCategoria = 3)
   ),
   new Producto(
-    (id = 1),
+    (id = 13),
     (nombre = "Leotardo Descubierta Espalda"),
     (imagen = "../images/leotardo-descubierta.webp"),
     (precio = 489.9),
@@ -164,7 +164,7 @@ let productos = [
     (idCategoria = 3)
   ),
   new Producto(
-    (id = 1),
+    (id = 14),
     (nombre = "Leotardo C/Mangas"),
     (imagen = "../images/leotardo-mangas.webp"),
     (precio = 471.0),
@@ -175,7 +175,7 @@ let productos = [
     (idCategoria = 3)
   ),
   new Producto(
-    (id = 1),
+    (id = 15),
     (nombre = "Leotardo Manga Corta"),
     (imagen = "../images/leotardo-media-manga.webp"),
     (precio = 469.0),
@@ -186,7 +186,7 @@ let productos = [
     (idCategoria = 3)
   ),
   new Producto(
-    (id = 1),
+    (id = 16),
     (nombre = "Leotardo Tirantes"),
     (imagen = "../images/leotardo-tirantes.webp"),
     (precio = 559.0),

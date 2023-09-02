@@ -7,4 +7,15 @@
         font-weight: bold;
     }
 
+    .btn-primary {
+        --mdb-btn-bg: #ce0a31;
+        --mdb-btn-box-shadow: 0 4px 9px -4px #ce0a31;
+        --mdb-btn-hover-bg: #ce0a31;
+        --mdb-btn-focus-bg: #ce0a31;
+        --mdb-btn-active-bg: #ce0a31;
+    }
+}
+
+.modal-backdrop {
+    z-index: 1029 !important;
 }

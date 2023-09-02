@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="../lib/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="stylesheet" href="../lib/MDB5-STANDARD-UI-KIT-Free-6.2.0/css/mdb.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -18,7 +19,7 @@
 <body>
     <header>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <!-- Container wrapper -->
             <div class="container container-fluid">
                 <!-- Toggle button -->
@@ -80,25 +81,23 @@
                     <!-- Modal -->
                     <div class="modal fade" id="ballet" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Compra</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Tu Carrito<i class="fa-solid fa-cart-shopping ms-3"></i></h5>
                                     <button type="button" class="btn-close" data-mdb-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">Estamos trabajando en ello...</div>
+                                <div class="modal-body" id="cuerpo"></div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
+                                    <button type="button" id="limpiarCarrito" class="btn btn-warning">Limpiar carrito</button>
+                                    <button type="button" class="btn btn-info"
                                         data-mdb-dismiss="modal">Cerrar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
             </div> <!-- Container wrapper -->
         </nav>
@@ -129,6 +128,18 @@
         </section>
     </main>
     <!-- main -->
+    <!-- toast -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3 text-white">
+        <div id="notificacion" class="toast bg-info" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header bg-info text-white">
+            <strong class="me-auto fw-bold" id="toast-title"></strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body" id="toast-body">
+          </div>
+        </div>
+      </div>
+      <!-- toast -->
     <!-- footer -->
     <footer class="text-center text-white footer">
         <div class="container container-fluid pt-4">
@@ -167,6 +178,7 @@
         <!-- Copyright -->
     </footer>
     <!-- footer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="../lib/fontawesome-free-6.4.0-web/js/all.min.js"></script>
     <script src="../lib/MDB5-STANDARD-UI-KIT-Free-6.2.0/js/mdb.min.js"></script>
     <!-- caperta js -->
@@ -174,6 +186,48 @@
     <script src="../js/tienda/categoria.js" defer></script>
     <script src="../js/tienda/moneda.js" defer></script>
     <script src="../js/tienda/tienda.js" defer></script>
+    <script src="../js/tienda/modal.js" defer></script>
+
+
+
+
+
+
+    <!-- '<table class="table align-middle mb-0 bg-white text-center">
+        <thead class="bg-light">
+          <tr>
+            <th>Producto
+            </th>
+            <th>Precio Unitario</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="d-flex align-items-center justify-content-center">
+                producto.imagen +
+                <div class="ms-3">
+                  <p class="fw-bold mb-1">+producto.nombre +</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class="fw-normal mb-1">+producto.precio+</p>
+            </td>
+            <td>
+                <p class="fw-normal mb-1">pe.cantidad</p>
+            </td>
+            <td><p class="fw-normal mb-1">//aqui hago la cantidad * precio</p></td>
+          </tr>
+          <tr>
+            <th class="text-center colspan='3'">
+                <td>//aqui iria la suma</td>
+            </th>
+          </tr>
+        </tbody>
+      </table>' -->
 </body>
 
 </html>

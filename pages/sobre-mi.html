@@ -19,7 +19,7 @@
 <body>
     <header>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <!-- Container wrapper -->
             <div class="container container-fluid">
                 <!-- Toggle button -->
@@ -83,16 +83,17 @@
                     <!-- Modal -->
                     <div class="modal fade" id="ballet" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Compra</h5>
                                     <button type="button" class="btn-close" data-mdb-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">Estamos trabajando en ello...</div>
+                                <div class="modal-body" id="cuerpo"></div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
+                                    <button type="button" id="limpiarCarrito" class="btn btn-warning">Limpiar carrito</button>
+                                    <button type="button" class="btn btn-info"
                                         data-mdb-dismiss="modal">Cerrar</button>
                                 </div>
                             </div>
@@ -311,6 +312,9 @@
     <!-- footer -->
     <script src="../lib/fontawesome-free-6.4.0-web/js/all.min.js"></script>
     <script src="../lib/MDB5-STANDARD-UI-KIT-Free-6.2.0/js/mdb.min.js"></script>
+    <script src="../js/tienda/producto.js" defer></script>
+    <script src="../js/tienda/moneda.js" defer></script>
+    <script src="../js/tienda/modal.js" defer></script>
 </body>
 
 </html>

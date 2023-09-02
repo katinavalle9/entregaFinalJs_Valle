@@ -5,8 +5,12 @@ let loadingContainer = document.getElementById("loading-container");
 let container = document.getElementById("products-container");
 let searchInput = document.getElementById("search-input");
 const btnAgregar = document.getElementById("btn-agregar");
-
-//cuando se ha cargado por completo la pagina se hace el evento y llama a la funcion despues de 2 seg. y si pasa a true es que es primera vez
+const toastBootstrap = bootstrap.Toast.getOrCreateInstance(
+  document.getElementById("notificacion")
+);
+const toastTitle = document.getElementById("toast-title");
+const cuerpoToast = document.getElementById("toast-body");
+//cuando se ha cargado por completo la pagina se hace el evento y llama a la funcion despues de 2 seg. y si se le pasa a true es que es primera vez
 window.addEventListener("load", (e) => {
   mainRender(2000, true);
 });
@@ -61,64 +65,109 @@ function renderProductosPorCategoria() {
 function botonesCantidad() {
   const botonesMas = document.querySelectorAll(".btn-mas");
   const botonesMenos = document.querySelectorAll(".btn-menos");
+  const cantidadInputs = document.querySelectorAll(".cantidad-input");
+  const botonesAgregarCarrito = document.querySelectorAll(
+    ".btn-agregar-carrito"
+  );
+
   //para el boton de mas
   botonesMas.forEach((botonMas) => {
     botonMas.addEventListener("click", (e) => {
-      const cantidadInput =
-        e.target.parentNode.querySelector(".cantidad-input");
+      const id = botonMas.dataset.idproducto;
+      const cantidadInput = document.getElementById(`cantidad-input-${id}`);
+      cantidadInput.value =
+        cantidadInput.value === "" ? "0" : cantidadInput.value;
       cantidadInput.value = parseInt(cantidadInput.value) + 1;
     });
-    const cantidadInputs = document.querySelectorAll(".cantidad-input");
-
-    cantidadInputs.forEach((input) => {
-      input.addEventListener("input", (e) => {
-        // Obtener el valor actual del input
-        const inputValue = e.target.value;
-
-        // Usar regex para permitir solo números enteros
-        const sanitizedValue = inputValue.replace(/[^0-9]/g, "");
-
-        // Asegurarse de que el valor no esté vacío
-        if (sanitizedValue === "") {
-          e.target.value = "1"; // Establecer el valor mínimo si está vacío
-        } else {
-          e.target.value = sanitizedValue;
-        }
-      });
-
-      // Validar la entrada cuando el input pierde el foco
-      input.addEventListener("blur", (e) => {
-        if (e.target.value < 1) {
-          e.target.value = "1"; // Establecer el valor mínimo si es menor a 1
-        }
-      });
-    });
   });
-
   //para el boton de menos
   botonesMenos.forEach((botonMenos) => {
     botonMenos.addEventListener("click", (e) => {
-      const cantidadInput =
-        e.target.parentNode.querySelector(".cantidad-input");
+      const id = botonMenos.dataset.idproducto;
+      const cantidadInput = document.getElementById(`cantidad-input-${id}`);
       if (parseInt(cantidadInput.value) > 1) {
         cantidadInput.value = parseInt(cantidadInput.value) - 1;
+      } else {
+        cantidadInput.value = "1";
+      }
+    });
+  });
+  cantidadInputs.forEach((input) => {
+    input.addEventListener("input", (e) => {
+      // Obtener el valor actual del input
+      const inputValue = e.target.value;
+
+      // Reemplazar cualquier caracter no numérico con una cadena vacía
+      const sanitizedValue = inputValue.replace(/\D/g, "");
+      // console.log(sanitizedValue);
+      // Asegurarse de que el valor no esté vacío y sea mayor a 0
+      if (sanitizedValue === "" || sanitizedValue < 1) {
+        e.target.value = ""; // Establecer el valor mínimo si es menor a 1 o está vacío
+      } else {
+        e.target.value = sanitizedValue;
+      }
+    });
+  });
+  botonesAgregarCarrito.forEach((boton) => {
+    boton.addEventListener("click", () => {
+      let productoId = parseInt(boton.dataset.idproducto);
+      const cantidadInput = parseInt(
+        document.getElementById(`cantidad-input-${productoId}`).value
+      );
+      let productosElegidos = [];
+      let coincidencias;
+      let productosBallet = localStorage.getItem("productosBallet");
+      let producto = {
+        id: productoId,
+        cantidad: cantidadInput,
+      };
+      if (!isNaN(cantidadInput)) {
+        if (productosBallet) {
+          productosElegidos = JSON.parse(productosBallet);
+          coincidencias = productosElegidos.find((pe) => pe.id === producto.id);
+          if (coincidencias !== undefined) {
+            coincidencias.cantidad += producto.cantidad;
+            console.log(coincidencias);
+          } else {
+            productosElegidos.push(producto);
+            console.log(productosElegidos);
+          }
+        } else {
+          productosElegidos.push(producto);
+          console.log(productosElegidos);
+        }
+        localStorage.setItem(
+          "productosBallet",
+          JSON.stringify(productosElegidos)
+        );
+        toastTitle.innerHTML =
+          'Producto agregado <i class="fa-solid fa-circle-check ms-3 text-success"></i>';
+        cuerpoToast.innerHTML = "Su producto ha sido agregado con éxito al carrito de compras ";
+        toastBootstrap.show();
+      } else {
+        toastTitle.innerHTML =
+          'Advertencia <i class="fa-solid fa-triangle-exclamation ms-3 text-warning"></i>';
+        cuerpoToast.innerHTML = "Cantidad inválida";
+        toastBootstrap.show();
       }
     });
   });
 }
 
-function createCantidadContainer() {
-  let cantidadInput =
-    '<input type="tel" class="cantidad-input form-control form-control-sm mx-2" value="1" min="1">';
-  let botonMas =
-    '<button class="btn-mas btn btn-sm btn-dark color-light"><i class="fas fa-plus"></i></button>';
-  let botonMenos =
-    '<button class="btn-menos btn btn-sm btn-dark color-light"><i class="fas fa-minus"></i></button>';
+//creo los botones
+function createCantidadContainer(id) {
+  let cantidadInput = `<input type="tel" id="cantidad-input-${id}" class="cantidad-input form-control form-control-sm mx-2" value="1" min="1">`;
+  let botonMas = `<button class="btn-mas btn btn-sm btn-dark color-light btn-rounded" data-idProducto="${id}" ><i class="fas fa-plus"></i></button>`;
+  let botonMenos = `<button class="btn-menos btn btn-sm btn-dark color-light btn-rounded" data-idProducto="${id}" ><i class="fas fa-minus"></i></button>`;
+  let agregarCarrito = `<button class="btn-agregar-carrito btn btn-primary mt-2" data-idProducto="${id}" >Agregar al Carrito</button>`;
   return (
-    '<div class="cantidad-container d-flex">' +
+    `<div class="cantidad-container d-flex">` +
     botonMenos +
     cantidadInput +
     botonMas +
+    "</div>" +
+    "<div>" +
+    agregarCarrito +
     "</div>"
   );
 }
@@ -129,9 +178,10 @@ function renderProductos(productos) {
   //esto es para que se pongan todos los prodcutos de nuevo con sus propiedades
   let row = '<div class="row mb-3">';
   productos.forEach((producto) => {
-    let tempMoneda = monedas.filter((m) => m.id === producto.idMoneda)[0];
+    let tempMoneda = monedas.find((m) => m.id === producto.idMoneda);
     // console.log(tempMoneda);
-    let cantidadContainer = createCantidadContainer();
+    // console.log(producto.id);
+    let cantidadContainer = createCantidadContainer(producto.id);
     let item =
       '<div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center flex-column align-items-center mb-5"><div class="bg-image hover-zoom"><img class="h-250" src="' +
       producto.imagen +
