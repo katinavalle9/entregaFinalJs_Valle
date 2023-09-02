@@ -63,10 +63,11 @@ function carrito() {
       moneda.nombre +
       "</td><td></td></tr></tbody></table></div>";
     cuerpo.innerHTML = cuerpoModal;
-    
+
     eliminar();
   } else {
-    let index = window.location.href.includes("index.html");
+    let protocol = window.location.protocol=="http:";
+    let index = window.location.href.includes("index.html") || (protocol && window.location.pathname.split("/").length==2) || (!protocol && window.location.pathname.split("/").length==3);
     let tienda = window.location.href.includes("tienda.html");
     let href = "";
     if (index) {
