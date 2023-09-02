@@ -63,6 +63,7 @@ function carrito() {
       moneda.nombre +
       "</td><td></td></tr></tbody></table></div>";
     cuerpo.innerHTML = cuerpoModal;
+    
     eliminar();
   } else {
     let index = window.location.href.includes("index.html");
