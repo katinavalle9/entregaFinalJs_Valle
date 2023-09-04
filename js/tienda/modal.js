@@ -1,3 +1,5 @@
+import {productos} from "./producto.js";
+import {monedas} from "./moneda.js";
 const ballet = document.getElementById("ballet");
 const cuerpo = document.getElementById("cuerpo");
 const limpiarCarrito = document.getElementById("limpiarCarrito");

@@ -1,5 +1,7 @@
 //////////////////////////////////////////ES TODA LA FUNCIONALIDAD////////////////////////////////////////////////////////////
-
+import {productos} from "./producto.js";
+import {categorias} from "./categoria.js";
+import {monedas} from "./moneda.js";
 //console.log(productos);
 let loadingContainer = document.getElementById("loading-container");
 let container = document.getElementById("products-container");
