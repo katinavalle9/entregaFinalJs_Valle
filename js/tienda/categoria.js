@@ -1,4 +1,4 @@
-import datos from "./base.json" assert { type: "json" };
+import datos from "../../datos/base.json" assert { type: "json" };
 
 class Categoria {
   constructor(id, nombre, descripcion) {
