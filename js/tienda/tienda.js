@@ -1,7 +1,7 @@
 //////////////////////////////////////////ES TODA LA FUNCIONALIDAD////////////////////////////////////////////////////////////
-import {productos} from "./producto.js";
-import {categorias} from "./categoria.js";
-import {monedas} from "./moneda.js";
+import { productos } from "./producto.js";
+import { categorias } from "./categoria.js";
+import { monedas } from "./moneda.js";
 //console.log(productos);
 let loadingContainer = document.getElementById("loading-container");
 let container = document.getElementById("products-container");
@@ -113,6 +113,7 @@ function botonesCantidad() {
   botonesAgregarCarrito.forEach((boton) => {
     boton.addEventListener("click", () => {
       let productoId = parseInt(boton.dataset.idproducto);
+      let idStripe = boton.dataset.idstripe;
       const cantidadInput = parseInt(
         document.getElementById(`cantidad-input-${productoId}`).value
       );
@@ -122,6 +123,7 @@ function botonesCantidad() {
       let producto = {
         id: productoId,
         cantidad: cantidadInput,
+        idStripe: idStripe,
       };
       if (!isNaN(cantidadInput)) {
         if (productosBallet) {
@@ -129,14 +131,14 @@ function botonesCantidad() {
           coincidencias = productosElegidos.find((pe) => pe.id === producto.id);
           if (coincidencias !== undefined) {
             coincidencias.cantidad += producto.cantidad;
-            console.log(coincidencias);
+            // console.log(coincidencias);
           } else {
             productosElegidos.push(producto);
-            console.log(productosElegidos);
+            // console.log(productosElegidos);
           }
         } else {
           productosElegidos.push(producto);
-          console.log(productosElegidos);
+          // console.log(productosElegidos);
         }
         localStorage.setItem(
           "productosBallet",
@@ -144,7 +146,8 @@ function botonesCantidad() {
         );
         toastTitle.innerHTML =
           'Producto agregado <i class="fa-solid fa-circle-check ms-3 text-success"></i>';
-        cuerpoToast.innerHTML = "Su producto ha sido agregado con éxito al carrito de compras ";
+        cuerpoToast.innerHTML =
+          "Su producto ha sido agregado con éxito al carrito de compras ";
         toastBootstrap.show();
       } else {
         toastTitle.innerHTML =
@@ -157,11 +160,11 @@ function botonesCantidad() {
 }
 
 //creo los botones
-function createCantidadContainer(id) {
+function createCantidadContainer(id, idStripe) {
   let cantidadInput = `<input type="tel" id="cantidad-input-${id}" class="cantidad-input form-control form-control-sm mx-2" value="1" min="1">`;
   let botonMas = `<button class="btn-mas btn btn-sm btn-dark color-light btn-rounded" data-idProducto="${id}" ><i class="fas fa-plus"></i></button>`;
   let botonMenos = `<button class="btn-menos btn btn-sm btn-dark color-light btn-rounded" data-idProducto="${id}" ><i class="fas fa-minus"></i></button>`;
-  let agregarCarrito = `<button class="btn-agregar-carrito btn btn-primary mt-2" data-idProducto="${id}" >Agregar al Carrito</button>`;
+  let agregarCarrito = `<button class="btn-agregar-carrito btn btn-primary mt-2" data-idProducto="${id}" data-idstripe="${idStripe}" >Agregar al Carrito</button>`;
   return (
     `<div class="cantidad-container d-flex">` +
     botonMenos +
@@ -183,7 +186,10 @@ function renderProductos(productos) {
     let tempMoneda = monedas.find((m) => m.id === producto.idMoneda);
     // console.log(tempMoneda);
     // console.log(producto.id);
-    let cantidadContainer = createCantidadContainer(producto.id);
+    let cantidadContainer = createCantidadContainer(
+      producto.id,
+      producto.idStripe
+    );
     let item =
       '<div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center flex-column align-items-center mb-5"><div class="bg-image hover-zoom"><img class="h-250" src="' +
       producto.imagen +

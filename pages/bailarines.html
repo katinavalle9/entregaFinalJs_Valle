@@ -44,14 +44,14 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="tienda">
                                 <li>
-                                    <a class="dropdown-item" href="tienda.html#puntas">Puntas & Medias
+                                    <a class="dropdown-item" href="tienda.html">Puntas & Medias
                                         Puntas</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="tienda.html#faldas">Faldas</a>
+                                    <a class="dropdown-item" href="tienda.html">Faldas</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="tienda.html#leotardos">Leotardos</a>
+                                    <a class="dropdown-item" href="tienda.html">Leotardos</a>
                                 </li>
                             </ul>
                         </li>
@@ -90,6 +90,7 @@
                             </div>
                             <div class="modal-body" id="cuerpo"></div>
                             <div class="modal-footer">
+                                <button type="button" id="procederPago"  style="display: none;" class="btn btn-success">Proceder pago</button>
                                 <button type="button" id="limpiarCarrito" class="btn btn-warning">Limpiar carrito</button>
                                     <button type="button" class="btn btn-info"
                                         data-mdb-dismiss="modal">Cerrar</button>
@@ -414,8 +415,8 @@
     <!-- footer -->
     <script src="../lib/fontawesome-free-6.4.0-web/js/all.min.js"></script>
     <script src="../lib/MDB5-STANDARD-UI-KIT-Free-6.2.0/js/mdb.min.js"></script>
-    <script type="module" src="../js/tienda/producto.js" defer></script>
-    <script type="module" src="../js/tienda/moneda.js" defer></script>
+    <script src="../lib/sweetAlert/sweetAlert2-js.net_npm_sweetalert2@11"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <script type="module" src="../js/tienda/modal.js" defer></script>
     
 </body>

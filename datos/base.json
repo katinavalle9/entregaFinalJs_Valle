@@ -9,7 +9,8 @@
             "porcentajePromocion": 0,
             "cantidadPromocion": 0,
             "idMoneda": 1,
-            "idCategoria": 1
+            "idCategoria": 1,
+            "idStripe": "price_1NnmbYBb5wpWYuGSUkcO7Kzq"
         },
         {
             "id": 2,
@@ -20,7 +21,8 @@
             "porcentajePromocion": 25,
             "cantidadPromocion": 2,
             "idMoneda": 1,
-            "idCategoria": 1
+            "idCategoria": 1,
+            "idStripe": "price_1NnmaXBb5wpWYuGSWDiKhMML"
         },
         {
             "id": 3,
@@ -31,15 +33,20 @@
             "porcentajePromocion": 0,
             "cantidadPromocion": 0,
             "idMoneda": 1,
-            "idCategoria": 1
+            "idCategoria": 1,
+            "idStripe": "price_1NnmZZBb5wpWYuGSrSW3NFxP"
         },
         {
             "id": 4,
             "nombre": "Medias Puntas Capezio",
             "imagen": "../images/capezio-media.webp",
             "precio": 961.0,
+            "tienePromocion": false,
+            "porcentajePromocion": 0,
+            "cantidadPromocion": 0,
             "idMoneda": 1,
-            "idCategoria": 1
+            "idCategoria": 1,
+            "idStripe": "price_1NnXEABb5wpWYuGSCHmYuREG"
         },
         {
             "id": 5,
@@ -50,7 +57,8 @@
             "porcentajePromocion": 0,
             "cantidadPromocion": 0,
             "idMoneda": 1,
-            "idCategoria": 1
+            "idCategoria": 1,
+            "idStripe": "price_1NnmYnBb5wpWYuGS1Yuv4qAw"
         },
         {
             "id": 6,
@@ -61,7 +69,8 @@
             "porcentajePromocion": 0,
             "cantidadPromocion": 0,
             "idMoneda": 1,
-            "idCategoria": 1
+            "idCategoria": 1,
+            "idStripe": "price_1NnmXzBb5wpWYuGSzfFCHee4"
         },
         {
             "id": 7,
@@ -72,7 +81,8 @@
             "porcentajePromocion": 0,
             "cantidadPromocion": 0,
             "idMoneda": 1,
-            "idCategoria": 2
+            "idCategoria": 2,
+            "idStripe": "price_1NnmjeBb5wpWYuGSLExXfrqp"
         },
         {
             "id": 8,
@@ -83,7 +93,8 @@
             "porcentajePromocion": 10,
             "cantidadPromocion": 3,
             "idMoneda": 1,
-            "idCategoria": 2
+            "idCategoria": 2,
+            "idStripe": "price_1NnmkJBb5wpWYuGSCEEjHk5H"
         },
         {
             "id": 9,
@@ -94,7 +105,8 @@
             "porcentajePromocion": 0,
             "cantidadPromocion": 0,
             "idMoneda": 1,
-            "idCategoria": 2
+            "idCategoria": 2,
+            "idStripe": "price_1NnmlZBb5wpWYuGSk1hWmAty"
         },
         {
             "id": 10,
@@ -105,7 +117,8 @@
             "porcentajePromocion": 0,
             "cantidadPromocion": 0,
             "idMoneda": 1,
-            "idCategoria": 2
+            "idCategoria": 2,
+            "idStripe": "price_1Nnmm6Bb5wpWYuGSQmsEgK4U"
         },
         {
             "id": 11,
@@ -116,7 +129,8 @@
             "porcentajePromocion": 0,
             "cantidadPromocion": 0,
             "idMoneda": 1,
-            "idCategoria": 2
+            "idCategoria": 2,
+            "idStripe": "price_1NnmvtBb5wpWYuGSKeXvjR00"
         },
         {
             "id": 12,
@@ -127,7 +141,8 @@
             "porcentajePromocion": 0,
             "cantidadPromocion": 0,
             "idMoneda": 1,
-            "idCategoria": 3
+            "idCategoria": 3,
+            "idStripe": "price_1Nnn0CBb5wpWYuGSuZJDtylm"
         },
         {
             "id": 13,
@@ -138,7 +153,8 @@
             "porcentajePromocion": 0,
             "cantidadPromocion": 0,
             "idMoneda": 1,
-            "idCategoria": 3
+            "idCategoria": 3,
+            "idStripe": "price_1Nnn3vBb5wpWYuGSshLeIhaj"
         },
         {
             "id": 14,
@@ -149,7 +165,8 @@
             "porcentajePromocion": 30,
             "cantidadPromocion": 4,
             "idMoneda": 1,
-            "idCategoria": 3
+            "idCategoria": 3,
+            "idStripe": "price_1Nnn5CBb5wpWYuGSAW3BJRKb"
         },
         {
             "id": 15,
@@ -160,7 +177,8 @@
             "porcentajePromocion": 0,
             "cantidadPromocion": 0,
             "idMoneda": 1,
-            "idCategoria": 3
+            "idCategoria": 3,
+            "idStripe": "price_1Nnn5fBb5wpWYuGS3kbMN5xF"
         },
         {
             "id": 16,
@@ -171,7 +189,8 @@
             "porcentajePromocion": 0,
             "cantidadPromocion": 0,
             "idMoneda": 1,
-            "idCategoria": 3
+            "idCategoria": 3,
+            "idStripe": "price_1Nnn69Bb5wpWYuGSabkPDGZ8"
         }
     ],
     "categorias": [

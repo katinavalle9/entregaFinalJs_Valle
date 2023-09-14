@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../lib/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="stylesheet" href="../lib/MDB5-STANDARD-UI-KIT-Free-6.2.0/css/mdb.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -46,13 +46,13 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="tienda">
                                 <li>
-                                    <a class="dropdown-item" href="#puntas">Puntas & Medias Puntas</a>
+                                    <a class="dropdown-item" href="">Puntas & Medias Puntas</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#faldas">Faldas</a>
+                                    <a class="dropdown-item" href="">Faldas</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#leotardos">Leotardos</a>
+                                    <a class="dropdown-item" href="">Leotardos</a>
                                 </li>
                             </ul>
                         </li>
@@ -84,15 +84,18 @@
                         <div class="modal-dialog modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Tu Carrito<i class="fa-solid fa-cart-shopping ms-3"></i></h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Tu Carrito<i
+                                            class="fa-solid fa-cart-shopping ms-3"></i></h5>
                                     <button type="button" class="btn-close" data-mdb-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body" id="cuerpo"></div>
                                 <div class="modal-footer">
-                                    <button type="button" id="limpiarCarrito" class="btn btn-warning">Limpiar carrito</button>
-                                    <button type="button" class="btn btn-info"
-                                        data-mdb-dismiss="modal">Cerrar</button>
+                                    <button type="button" id="procederPago" style="display: none;"
+                                        class="btn btn-success">Proceder pago</button>
+                                    <button type="button" id="limpiarCarrito" style="display: none;"
+                                        class="btn btn-warning">Limpiar carrito</button>
+                                    <button type="button" class="btn btn-info" data-mdb-dismiss="modal">Cerrar</button>
                                 </div>
                             </div>
                         </div>
@@ -131,15 +134,15 @@
     <!-- toast -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3 text-white">
         <div id="notificacion" class="toast bg-info" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-header bg-info text-white">
-            <strong class="me-auto fw-bold" id="toast-title"></strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-          </div>
-          <div class="toast-body" id="toast-body">
-          </div>
+            <div class="toast-header bg-info text-white">
+                <strong class="me-auto fw-bold" id="toast-title"></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toast-body">
+            </div>
         </div>
-      </div>
-      <!-- toast -->
+    </div>
+    <!-- toast -->
     <!-- footer -->
     <footer class="text-center text-white footer">
         <div class="container container-fluid pt-4">
@@ -178,13 +181,12 @@
         <!-- Copyright -->
     </footer>
     <!-- footer -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/fontawesome-free-6.4.0-web/js/all.min.js"></script>
     <script src="../lib/MDB5-STANDARD-UI-KIT-Free-6.2.0/js/mdb.min.js"></script>
+    <script src="../lib/sweetAlert/sweetAlert2-js.net_npm_sweetalert2@11"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <!-- caperta js -->
-    <script type="module" src="../js/tienda/producto.js" defer></script>
-    <script type="module" src="../js/tienda/categoria.js" defer></script>
-    <script type="module" src="../js/tienda/moneda.js" defer></script>
     <script type="module" src="../js/tienda/tienda.js" defer></script>
     <script type="module" src="../js/tienda/modal.js" defer></script>
 </body>

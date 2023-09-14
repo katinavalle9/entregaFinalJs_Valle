@@ -1,8 +1,11 @@
-import {productos} from "./producto.js";
-import {monedas} from "./moneda.js";
+import { productos } from "./producto.js";
+import { monedas } from "./moneda.js";
+import keys from "./env.js";
 const ballet = document.getElementById("ballet");
 const cuerpo = document.getElementById("cuerpo");
 const limpiarCarrito = document.getElementById("limpiarCarrito");
+const procederPago = document.getElementById("procederPago");
+
 limpiarCarrito.addEventListener("click", () => {
   localStorage.clear();
   carrito();
@@ -10,10 +13,6 @@ limpiarCarrito.addEventListener("click", () => {
 
 ballet.addEventListener("show.mdb.modal", () => {
   carrito();
-});
-
-ballet.addEventListener("shown.mdb.modal", () => {
-  //document.querySelector(".modal-backdrop").classList.add('d-none');
 });
 
 function carrito() {
@@ -65,16 +64,24 @@ function carrito() {
       moneda.nombre +
       "</td><td></td></tr></tbody></table></div>";
     cuerpo.innerHTML = cuerpoModal;
+    //aqui se agrega el boton
+    limpiarCarrito.style.display = "block";
+    procederPago.style.display = "block";
 
     eliminar();
   } else {
-    let protocol = window.location.protocol=="http:";
-    let index = window.location.href.includes("index.html") || (protocol && window.location.pathname.split("/").length==2) || (!protocol && window.location.pathname.split("/").length==3);
+    //aqui se determinar si esta en la pag principal y te redirecciona a tienda o que ya estes en tienda
+    let protocol = window.location.protocol == "http:";
+    let index =
+      window.location.href.includes("index.html") ||
+      (protocol && window.location.pathname.split("/").length == 2) ||
+      (!protocol && window.location.pathname.split("/").length == 3);
+    //asigna valor boolean y le incluye tienda a la url y se verifica si esta en la tienda o no
     let tienda = window.location.href.includes("tienda.html");
     let href = "";
     if (index) {
       href = "pages/tienda.html";
-    } else if(!tienda) {
+    } else if (!tienda) {
       href = "tienda.html";
     }
     let enlace = "";
@@ -87,6 +94,8 @@ function carrito() {
     cuerpo.innerHTML =
       '<p class="text-center">Todavía no tienes productos en tu carrito <i class="fa-regular fa-face-frown-open text-warning"></i></p>' +
       enlace;
+    limpiarCarrito.style.display = "none";
+    procederPago.style.display = "none";
   }
 }
 
@@ -115,3 +124,52 @@ function eliminar() {
     });
   });
 }
+
+procederPago.addEventListener("click", () => {
+  let productosCarritoString = localStorage.getItem("productosBallet");
+  let productosCarrito = JSON.parse(productosCarritoString);
+  //se hace esto porque en stripe se le pasa el price y quantity y lo adapto al mio
+  const stripeData = productosCarrito.map((objeto) => {
+    return { price: objeto.idStripe, quantity: objeto.cantidad };
+  });
+
+  Stripe(keys.public).redirectToCheckout({
+    lineItems: stripeData,
+    mode: "payment",
+    successUrl:
+      window.location.href.replace("?success=true", "") + "?success=true",
+    cancelUrl:
+      window.location.href.replace("?success=false", "") + "?success=false",
+  })
+  .then((res) => {
+      if (res.error) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Ocurrió un error inesperado. Intente de nuevo por favor",
+        });
+      }
+    })
+});
+
+//Este evento es para comprobar el tipo de success que te devuelve
+document.addEventListener("DOMContentLoaded", () => {
+  const url = new URL(window.location.href);
+  const success = url.searchParams.get("success");
+  if (success) {
+    if (success === "true") {
+      Swal.fire({
+        icon: "success",
+        title: "Su pago procedió, gracias por su compra",
+      });
+      localStorage.clear();
+      carrito();
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Aviso...",
+        text: "Su pago no procedió. Por favor intente de nuevo",
+      });
+    }
+  }
+});

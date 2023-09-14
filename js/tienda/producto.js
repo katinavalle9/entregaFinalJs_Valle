@@ -9,7 +9,8 @@ class Producto {
     porcentajePromocion,
     cantidadPromocion,
     idMoneda,
-    idCategoria
+    idCategoria,
+    idStripe
   ) {
     (this.id = id),
       (this.nombre = nombre),
@@ -19,7 +20,8 @@ class Producto {
       (this.porcentajePromocion = porcentajePromocion),
       (this.cantidadPromocion = cantidadPromocion),
       (this.idMoneda = idMoneda),
-      (this.idCategoria = idCategoria);
+      (this.idCategoria = idCategoria),
+      (this.idStripe = idStripe);
   }
 }
 export const productos = datos.productos.map(
@@ -33,6 +35,7 @@ export const productos = datos.productos.map(
       producto.porcentajePromocion,
       producto.cantidadPromocion,
       producto.idMoneda,
-      producto.idCategoria
+      producto.idCategoria,
+      producto.idStripe
     )
 );
