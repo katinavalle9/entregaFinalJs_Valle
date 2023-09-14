@@ -17,6 +17,11 @@ ballet.addEventListener("show.mdb.modal", () => {
 
 function carrito() {
   let productosBallet = localStorage.getItem("productosBallet");
+  let protocol = window.location.protocol == "http:";
+  let index =
+    window.location.href.includes("index.html") ||
+    (protocol && window.location.pathname.split("/").length == 2) ||
+    (!protocol && window.location.pathname.split("/").length == 3);
   if (productosBallet) {
     let cuerpoModal =
       '<div class="table-responsive"><table class="table align-middle mb-0 bg-white text-center"><thead class="bg-light"><tr><th>Producto</th><th>Precio Unitario</th><th>Cantidad</th><th>Total</th><th>Eliminar</th></thead><tbody>';
@@ -32,9 +37,15 @@ function carrito() {
       totalFinal += total;
       // console.log(total)
       // console.log(producto);
+      let urlimage = "";
+      if (index) {
+        urlimage = producto.imagen.replace("../", "");
+      } else {
+        urlimage = producto.imagen;
+      }
       cuerpoModal +=
         '<tr><td><div class="d-flex align-items-center"><img src="' +
-        producto.imagen +
+        urlimage +
         '" alt="' +
         producto.nombre +
         '" style="width: 45px; height: 45px" class="rounded-circle"/>' +
@@ -70,12 +81,6 @@ function carrito() {
 
     eliminar();
   } else {
-    //aqui se determinar si esta en la pag principal y te redirecciona a tienda o que ya estes en tienda
-    let protocol = window.location.protocol == "http:";
-    let index =
-      window.location.href.includes("index.html") ||
-      (protocol && window.location.pathname.split("/").length == 2) ||
-      (!protocol && window.location.pathname.split("/").length == 3);
     //asigna valor boolean y le incluye tienda a la url y se verifica si esta en la tienda o no
     let tienda = window.location.href.includes("tienda.html");
     let href = "";
@@ -133,15 +138,16 @@ procederPago.addEventListener("click", () => {
     return { price: objeto.idStripe, quantity: objeto.cantidad };
   });
 
-  Stripe(keys.public).redirectToCheckout({
-    lineItems: stripeData,
-    mode: "payment",
-    successUrl:
-      window.location.href.replace("?success=true", "") + "?success=true",
-    cancelUrl:
-      window.location.href.replace("?success=false", "") + "?success=false",
-  })
-  .then((res) => {
+  Stripe(keys.public)
+    .redirectToCheckout({
+      lineItems: stripeData,
+      mode: "payment",
+      successUrl:
+        window.location.href.replace("?success=true", "") + "?success=true",
+      cancelUrl:
+        window.location.href.replace("?success=false", "") + "?success=false",
+    })
+    .then((res) => {
       if (res.error) {
         Swal.fire({
           icon: "error",
@@ -149,7 +155,7 @@ procederPago.addEventListener("click", () => {
           text: "Ocurrió un error inesperado. Intente de nuevo por favor",
         });
       }
-    })
+    });
 });
 
 //Este evento es para comprobar el tipo de success que te devuelve
