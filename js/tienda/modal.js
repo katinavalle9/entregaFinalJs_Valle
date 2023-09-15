@@ -144,7 +144,7 @@ procederPago.addEventListener("click", () => {
     })
     .catch((err) => {
       let message =
-        "Ocurrió un error inesperado. Le recomendamos limpiar el carrito y agregar menos productos para continuar";
+        "Ocurrió un error inesperado. Le recomendamos limpiar el carrito y agregar menos productos para continuar.";
       Swal.fire({
         icon: "error",
         title: "Aviso...",
