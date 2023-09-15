@@ -5,7 +5,7 @@ const ballet = document.getElementById("ballet");
 const cuerpo = document.getElementById("cuerpo");
 const limpiarCarrito = document.getElementById("limpiarCarrito");
 const procederPago = document.getElementById("procederPago");
-
+const myModalEl = new mdb.Modal(ballet);
 limpiarCarrito.addEventListener("click", () => {
   localStorage.clear();
   carrito();
@@ -139,7 +139,18 @@ procederPago.addEventListener("click", () => {
           title: "Error",
           text: "Ocurrió un error inesperado. Intente de nuevo por favor",
         });
+        myModalEl.hide();
       }
+    })
+    .catch((err) => {
+      let message =
+        "Ocurrió en error inesperado. Le recomendamos limpiar el carrito y agregar menos productos para continuar";
+      Swal.fire({
+        icon: "error",
+        title: "Aviso...",
+        text: message,
+      });
+      myModalEl.hide();
     });
 });
 
