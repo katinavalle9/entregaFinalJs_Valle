@@ -23,7 +23,6 @@ searchInput.addEventListener("input", (e) => {
   // console.log(searchInput.value);
   container.innerHTML = "";
   if (searchInput.value === "") {
-    // console.log("input vacio")
     loadingContainer.classList.remove("d-none");
     mainRender(500);
   } else {
@@ -101,7 +100,6 @@ function botonesCantidad() {
 
       // Reemplazar cualquier caracter no numérico con una cadena vacía
       const sanitizedValue = inputValue.replace(/\D/g, "");
-      // console.log(sanitizedValue);
       // Asegurarse de que el valor no esté vacío y sea mayor a 0
       if (sanitizedValue === "" || sanitizedValue < 1) {
         e.target.value = ""; // Establecer el valor mínimo si es menor a 1 o está vacío
@@ -131,14 +129,11 @@ function botonesCantidad() {
           coincidencias = productosElegidos.find((pe) => pe.id === producto.id);
           if (coincidencias !== undefined) {
             coincidencias.cantidad += producto.cantidad;
-            // console.log(coincidencias);
           } else {
             productosElegidos.push(producto);
-            // console.log(productosElegidos);
           }
         } else {
           productosElegidos.push(producto);
-          // console.log(productosElegidos);
         }
         localStorage.setItem(
           "productosBallet",
@@ -184,8 +179,6 @@ function renderProductos(productos) {
   let row = '<div class="row mb-3">';
   productos.forEach((producto) => {
     let tempMoneda = monedas.find((m) => m.id === producto.idMoneda);
-    // console.log(tempMoneda);
-    // console.log(producto.id);
     let cantidadContainer = createCantidadContainer(
       producto.id,
       producto.idStripe

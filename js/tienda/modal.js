@@ -35,17 +35,9 @@ function carrito() {
       moneda = monedas.find((moneda) => moneda.id === producto.idMoneda);
       let total = productoElegido.cantidad * producto.precio;
       totalFinal += total;
-      // console.log(total)
-      // console.log(producto);
-      let urlimage = "";
-      if (index) {
-        urlimage = producto.imagen.replace("../", "");
-      } else {
-        urlimage = producto.imagen;
-      }
       cuerpoModal +=
         '<tr><td><div class="d-flex align-items-center"><img src="' +
-        urlimage +
+        (index ? producto.imagen.replace("../", "") : producto.imagen) +
         '" alt="' +
         producto.nombre +
         '" style="width: 45px; height: 45px" class="rounded-circle"/>' +
@@ -83,19 +75,12 @@ function carrito() {
   } else {
     //asigna valor boolean y le incluye tienda a la url y se verifica si esta en la tienda o no
     let tienda = window.location.href.includes("tienda.html");
-    let href = "";
-    if (index) {
-      href = "pages/tienda.html";
-    } else if (!tienda) {
-      href = "tienda.html";
-    }
-    let enlace = "";
-    if (!tienda) {
-      enlace =
-        '<br><div class="text-center"> <a href="' +
+    let href = index ? "pages/tienda.html" : !tienda ? "tienda.html" : "";
+    let enlace = !tienda
+      ? '<br><div class="text-center"> <a href="' +
         href +
-        '" class="link">Ir a la tienda <i class="fa-solid fa-cart-shopping text-dark"></i></a></div>';
-    }
+        '" class="link">Ir a la tienda <i class="fa-solid fa-cart-shopping text-dark"></i></a></div>'
+      : "";
     cuerpo.innerHTML =
       '<p class="text-center">Todavía no tienes productos en tu carrito <i class="fa-regular fa-face-frown-open text-warning"></i></p>' +
       enlace;
