@@ -25,7 +25,7 @@ searchInput.addEventListener("input", (e) => {
   if (searchInput.value === "") {
     loadingContainer.classList.remove("d-none");
     mainRender(500);
-  } else {
+  } else {  
     //el includes funciona como un booleano y en vez de comparar con un === se le pone el includes con el valor que va a ingresar el usuario para filtrar los datos
     let tempProductos = productos.filter((p) =>
       p.nombre.toLowerCase().includes(searchInput.value.toLowerCase())
@@ -76,8 +76,7 @@ function botonesCantidad() {
     botonMas.addEventListener("click", (e) => {
       const id = botonMas.dataset.idproducto;
       const cantidadInput = document.getElementById(`cantidad-input-${id}`);
-      cantidadInput.value =
-        cantidadInput.value === "" ? "0" : cantidadInput.value;
+      cantidadInput.value = cantidadInput.value === "" ? "0" : cantidadInput.value;
       cantidadInput.value = parseInt(cantidadInput.value) + 1;
     });
   });
