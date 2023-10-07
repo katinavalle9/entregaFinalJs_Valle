@@ -22,10 +22,10 @@ window.addEventListener("load", (e) => {
 searchInput.addEventListener("input", (e) => {
   // console.log(searchInput.value);
   container.innerHTML = "";
-  if (searchInput.value === "") {
+  if (searchInput.value === "") { //sino estoy filtrando me renderiza los producto
     loadingContainer.classList.remove("d-none");
     mainRender(500);
-  } else {  
+  } else {   //si es estoy filtrando entonces me pintara los productos filtrados de acuerdo al valor que tenga mi input
     //el includes funciona como un booleano y en vez de comparar con un === se le pone el includes con el valor que va a ingresar el usuario para filtrar los datos
     let tempProductos = productos.filter((p) =>
       p.nombre.toLowerCase().includes(searchInput.value.toLowerCase())
@@ -122,7 +122,7 @@ function botonesCantidad() {
         cantidad: cantidadInput,
         idStripe: idStripe,
       };
-      if (!isNaN(cantidadInput)) {
+      if (!isNaN(cantidadInput)) { //si es un numero
         if (productosBallet) {
           productosElegidos = JSON.parse(productosBallet);
           coincidencias = productosElegidos.find((pe) => pe.id === producto.id);
@@ -143,7 +143,7 @@ function botonesCantidad() {
         cuerpoToast.innerHTML =
           "Su producto ha sido agregado con éxito al carrito de compras ";
         toastBootstrap.show();
-      } else {
+      } else { //sino es un numero 
         toastTitle.innerHTML =
           'Advertencia <i class="fa-solid fa-triangle-exclamation ms-3 text-warning"></i>';
         cuerpoToast.innerHTML = "Cantidad inválida";

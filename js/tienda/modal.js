@@ -17,7 +17,7 @@ ballet.addEventListener("show.mdb.modal", () => {
 
 function carrito() {
   let productosBallet = localStorage.getItem("productosBallet");
-  let protocol = window.location.protocol == "http:";
+  let protocol = window.location.protocol == "http:"; //va a ser true si es HTTP sino va a ser false por el HTTPS
   let index =
     window.location.href.includes("index.html") ||
     (protocol && window.location.pathname.split("/").length == 2) ||
@@ -70,7 +70,6 @@ function carrito() {
     //aqui se agrega el boton
     limpiarCarrito.style.display = "block";
     procederPago.style.display = "block";
-
     eliminar();
   } else {
     //asigna valor boolean y le incluye tienda a la url y se verifica si esta en la tienda o no
@@ -128,7 +127,7 @@ procederPago.addEventListener("click", () => {
       lineItems: stripeData,
       mode: "payment",
       successUrl:
-        window.location.href.replace("?success=true", "") + "?success=true",
+        window.location.href.replace("?success=true", "") + "?success=true", //se remplaza porque el parametro TRUE no quiero que se repita en mi url actal cuando procede el pago
       cancelUrl:
         window.location.href.replace("?success=false", "") + "?success=false",
     })
