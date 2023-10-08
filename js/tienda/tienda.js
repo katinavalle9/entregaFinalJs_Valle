@@ -41,7 +41,7 @@ function mainRender(time, esPrimeraVez = false) {
   setTimeout(() => {
     renderProductosPorCategoria();
     if (esPrimeraVez) {
-      searchInput.disabled = false;
+      searchInput.disabled = false; //no esta desahilitado 
     }
   }, time);
 }
@@ -76,8 +76,8 @@ function botonesCantidad() {
     botonMas.addEventListener("click", (e) => {
       const id = botonMas.dataset.idproducto;
       const cantidadInput = document.getElementById(`cantidad-input-${id}`);
-      cantidadInput.value = cantidadInput.value === "" ? "0" : cantidadInput.value;
-      cantidadInput.value = parseInt(cantidadInput.value) + 1;
+      cantidadInput.value = cantidadInput.value === "" ? "0" : cantidadInput.value; //porque el 0 es sumado mas el 1 convertido.
+      cantidadInput.value = parseInt(cantidadInput.value) + 1; //va ir incrementando de uno en uno las veces que le de el click
     });
   });
   //para el boton de menos
