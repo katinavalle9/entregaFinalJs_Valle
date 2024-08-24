@@ -22,7 +22,7 @@ class Categoria {
 export let categorias = [];
 
 // Aquí usas fetch para cargar el JSON
-fetch("/datos/base.json")
+fetch("/entregaFinalJs_Valle/datos/base.json")
   .then((response) => response.json())
   .then((datos) => {
     // Llena `categorias` con los datos cargados
