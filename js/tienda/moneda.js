@@ -23,7 +23,7 @@ class Moneda {
 export let monedas = [];
 
 // Carga del archivo JSON de manera asíncrona usando fetch
-fetch("/datos/base.json")
+fetch("/entregaFinalJs_Valle/datos/base.json")
   .then((response) => {
     if (!response.ok) {
       throw new Error("Error al cargar el archivo JSON");
