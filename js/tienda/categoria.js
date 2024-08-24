@@ -22,7 +22,7 @@ class Categoria {
 export let categorias = [];
 
 // Aquí usas fetch para cargar el JSON
-fetch("../../datos/base.json")
+fetch("/datos/base.json")
   .then((response) => response.json())
   .then((datos) => {
     // Llena `categorias` con los datos cargados
@@ -32,7 +32,7 @@ fetch("../../datos/base.json")
     );
 
     // Ahora puedes acceder a `categorias`
-    console.log(categorias); // Verifica que las categorías se han cargado correctamente
+    //console.log(categorias); // Verifica que las categorías se han cargado correctamente
   })
   .catch((error) => {
     console.error("Error al cargar el JSON:", error);

@@ -23,7 +23,7 @@ class Moneda {
 export let monedas = [];
 
 // Carga del archivo JSON de manera asíncrona usando fetch
-fetch("../../datos/base.json")
+fetch("/datos/base.json")
   .then((response) => {
     if (!response.ok) {
       throw new Error("Error al cargar el archivo JSON");
@@ -38,7 +38,7 @@ fetch("../../datos/base.json")
 
     // Aquí puedes ejecutar cualquier código que dependa de 'monedas'
     // Ejemplo: initMonedas(); si tienes una función para inicializar la UI
-    console.log(monedas); // Solo para demostrar que las monedas se han cargado correctamente
+    //console.log(monedas); // Solo para demostrar que las monedas se han cargado correctamente
   })
   .catch((error) => {
     console.error("Error al cargar el JSON:", error);

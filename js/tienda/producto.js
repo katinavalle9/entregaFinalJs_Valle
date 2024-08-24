@@ -128,7 +128,7 @@ class Producto {
 export let productos = [];
 
 // Aquí usas fetch para cargar el JSON
-fetch("../../datos/base.json")
+fetch("/datos/base.json")
   .then((response) => response.json())
   .then((datos) => {
     // Llena `productos` con los datos cargados
@@ -153,7 +153,7 @@ fetch("../../datos/base.json")
     const monedas = datos.monedas;
 
     // Lógica que depende de `productos`, `categorias`, o `monedas`
-    console.log(productos, categorias, monedas);
+    //console.log(productos, categorias, monedas);
     // Aquí podrías inicializar la UI o realizar otras operaciones
   })
   .catch((error) => {
